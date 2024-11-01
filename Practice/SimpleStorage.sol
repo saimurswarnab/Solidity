@@ -20,17 +20,21 @@ contract SimpleStorage{
 
       //person public myFriend = person(7, "pat")
     //   person public pat = person({favouriteNumber: 6, name:"sam"});
+       
+      //name to number
+      mapping(string => uint256) public nameToFavouriteNumber;
 
       function store(uint256 _favouriteNumber) public{ //Making a function
         myfavouritNumber = _favouriteNumber;
       }
-
+      //view,pure
       function retrieve() public view returns (uint256){ // if we don't want to use public in favourite number, then we can use another funtion for view like this
         return myfavouritNumber;
       }
-
+      //calldata, memory, storage
       function addPerson(string memory _name, uint256 _favNumber ) public{
         listOfPeople.push(person(_favNumber,_name));
+        nameToFavouriteNumber[_name]= _favNumber;
       }
 
 
