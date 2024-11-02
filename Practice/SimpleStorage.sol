@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.18; //solidity version 
+pragma solidity 0.8.24; //solidity version 
 
 contract SimpleStorage{
     //Basic Type: boolean , uint , int ,address, bytes
@@ -34,7 +34,7 @@ contract SimpleStorage{
       //calldata, memory, storage
       function addPerson(string memory _name, uint256 _favNumber ) public{
         listOfPeople.push(person(_favNumber,_name));
-        nameToFavouriteNumber[_name]= _favNumber;
+        nameToFavouriteNumber[_name]= _favNumber;//fav number
       }
 
 
