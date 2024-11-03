@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: MIT
-pragma solidity 0.8.24; //solidity version 
+pragma solidity ^0.8.18; //solidity version 
 
 contract SimpleStorage{
     //Basic Type: boolean , uint , int ,address, bytes
