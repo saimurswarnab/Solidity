@@ -24,7 +24,7 @@ contract SimpleStorage{
       //name to number
       mapping(string => uint256) public nameToFavouriteNumber;
 
-      function store(uint256 _favouriteNumber) public{ //Making a function
+      function store(uint256 _favouriteNumber) public virtual{ //Making a function
         myfavouritNumber = _favouriteNumber;
       }
       //view,pure
