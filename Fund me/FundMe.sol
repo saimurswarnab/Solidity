@@ -5,6 +5,8 @@ import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/interfaces/
 contract FundMe{
 
     uint256 public minimumUsd = 5e18; //5 * 1e18
+    address[] public funders;
+    mapping(address funder=>uint256 amountFunded) public addressToAmountFunded;
 
     function fund()public payable{
         //Allow users to send $
@@ -12,7 +14,8 @@ contract FundMe{
         //1. How do we send ETH to the contract?
 
         require(getCoversionRate(msg.value ) >= minimumUsd, "didn't send enough eth"); //1e18 = 1 ETH = 1000000000000000000 = 1 * 10 ** 18 wei
-
+        funders.push(msg.sender);
+        addressToAmountFunded[msg.sender] = addressToAmountFunded[msg.sender] + msg.value;
 
 
     }
