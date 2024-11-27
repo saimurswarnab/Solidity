@@ -3,18 +3,23 @@ pragma solidity ^0.8.17;
 
 import {PriceConverter}from "./PriceConverter.sol";
 
+//constant, immutable
+//771,439
+//751,078
+//727,895
 contract FundMe{
 
     using PriceConverter for uint256;
 
-    uint256 public minimumUsd = 5e18; //5 * 1e18
+    uint256 public constant minimumUsd = 5e18; //5 * 1e18
     address[] public funders;
     mapping(address funder=>uint256 amountFunded) public addressToAmountFunded;
 
-    address public owner;
-
+    address public immutable i_owner;
+//439 -immutable 
+//2574- without
     constructor() public{
-        owner = msg.sender;
+        i_owner = msg.sender;
         
 
 
@@ -57,7 +62,7 @@ contract FundMe{
     }
 
     modifier onlyOwner(){
-        require(msg.sender == owner, "Must be Owner");
+        require(msg.sender == i_owner, "Must be Owner");
         _;
     }
 
