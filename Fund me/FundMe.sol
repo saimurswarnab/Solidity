@@ -11,6 +11,15 @@ contract FundMe{
     address[] public funders;
     mapping(address funder=>uint256 amountFunded) public addressToAmountFunded;
 
+    address public owner;
+
+    constructor() public{
+        owner = msg.sender;
+        
+
+
+    }
+
     function fund()public payable{
         //Allow users to send $
         //Have a minimum $ sent
@@ -24,6 +33,7 @@ contract FundMe{
     }
 
     function withdraw()public{
+        require(msg.sender == owner, "Must be Owner");
         //for loop
         //for (/*star index, ending index, step amount*/)
         for(uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++){
