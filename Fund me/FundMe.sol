@@ -7,6 +7,9 @@ import {PriceConverter}from "./PriceConverter.sol";
 //771,439
 //751,078
 //727,895
+
+error NotOwner();
+
 contract FundMe{
 
     using PriceConverter for uint256;
@@ -62,7 +65,8 @@ contract FundMe{
     }
 
     modifier onlyOwner(){
-        require(msg.sender == i_owner, "Must be Owner");
+        //require(msg.sender == i_owner, "Must be Owner");
+        if(msg.sender != i_owner) {revert NotOwner();}
         _;
     }
 
