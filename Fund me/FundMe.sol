@@ -24,8 +24,6 @@ contract FundMe{
     constructor() public{
         i_owner = msg.sender;
         
-
-
     }
 
     function fund()public payable{
@@ -70,4 +68,13 @@ contract FundMe{
         _;
     }
 
+    //What happend if someone sends this contract ETH without calling the fund function
+
+    receive() external payable{
+        fund();
+    }
+    fallback() external payable{
+        fund();
+    }
+    //Fallback()
 }
